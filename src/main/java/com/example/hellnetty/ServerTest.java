@@ -27,7 +27,7 @@ public class ServerTest {
              */
             serverBootstrap.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)  //bossGroup的通道，只是负责连接
-                    .childHandler(new TestChannelnitializer()); //workerGroup的处理器，
+                    .childHandler(new MyInitializer()); //workerGroup的处理器，
 
             ChannelFuture channelFuture = serverBootstrap.bind(8899).sync();  //绑定端口
             channelFuture.channel().closeFuture().sync();
